@@ -5,19 +5,19 @@ trigger:
 pool: Default
 
 steps:
-- task: TerraformCLI
+- task: TerraformCLI@0
   displayName: 'Initialize Terraform'
   inputs:
     command: 'init'
     workingDirectory: '$(Build.SourcesDirectory)/azure' 
 
-- task: TerraformCLI
+- task: TerraformCLI@0
   displayName: 'Validate Terraform'
   inputs:
     command: 'validate'
     workingDirectory: '$(Build.SourcesDirectory)/azure' 
 
-- task: TerraformCLI
+- task: TerraformCLI@0
   displayName: 'Apply Terraform'
   inputs:
     command: 'apply'
