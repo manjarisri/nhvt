@@ -9,18 +9,18 @@ steps:
   displayName: 'Initialize Terraform'
   inputs:
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/path/to/terraform/files'  # Replace with the path to your Terraform files
+    workingDirectory: '$(Build.SourcesDirectory)./file.tf' 
 
-- task: TerraformCLI@0
+- task: TerraformCLI
   displayName: 'Validate Terraform'
   inputs:
     command: 'validate'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/path/to/terraform/files'  # Replace with the path to your Terraform files
+    workingDirectory: '$(Build.SourcesDirectory)./file.tf' 
 
-- task: TerraformCLI@0
+- task: TerraformCLI
   displayName: 'Apply Terraform'
   inputs:
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/path/to/terraform/files'  # Replace with the path to your Terraform files
-    environmentServiceName: 'your-azure-service-connection'  # Replace with your Azure service connection name
-    commandOptions: '-auto-approve'  # (Optional) Replace with any additional Terraform command options you want to pass
+    workingDirectory:  '$(Build.SourcesDirectory)./file.tf' 
+    environmentServiceName: 'guthub-connection' 
+    commandOptions: '-auto-approve'
