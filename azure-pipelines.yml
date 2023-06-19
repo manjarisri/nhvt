@@ -9,18 +9,18 @@ steps:
   displayName: 'Initialize Terraform'
   inputs:
     command: 'init'
-    workingDirectory: '$(Build.SourcesDirectory)./file.tf' 
+    workingDirectory: '$(Build.SourcesDirectory)/azure' 
 
 - task: TerraformCLI
   displayName: 'Validate Terraform'
   inputs:
     command: 'validate'
-    workingDirectory: '$(Build.SourcesDirectory)./file.tf' 
+    workingDirectory: '$(Build.SourcesDirectory)/azure' 
 
 - task: TerraformCLI
   displayName: 'Apply Terraform'
   inputs:
     command: 'apply'
-    workingDirectory:  '$(Build.SourcesDirectory)./file.tf' 
-    environmentServiceName: 'guthub-connection' 
+    workingDirectory:  '$(Build.SourcesDirectory)/azure' 
+    environmentServiceName: 'github-connection'
     commandOptions: '-auto-approve'
