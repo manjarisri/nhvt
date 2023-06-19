@@ -1,0 +1,26 @@
+name: demo_$(Date:yyyyMMdd)$(Rev:r)
+trigger:
+- manjari
+
+pool: Default
+
+steps:
+- task: TerraformCLI
+  displayName: 'Initialize Terraform'
+  inputs:
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/path/to/terraform/files'  # Replace with the path to your Terraform files
+
+- task: TerraformCLI@0
+  displayName: 'Validate Terraform'
+  inputs:
+    command: 'validate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/path/to/terraform/files'  # Replace with the path to your Terraform files
+
+- task: TerraformCLI@0
+  displayName: 'Apply Terraform'
+  inputs:
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/path/to/terraform/files'  # Replace with the path to your Terraform files
+    environmentServiceName: 'your-azure-service-connection'  # Replace with your Azure service connection name
+    commandOptions: '-auto-approve'  # (Optional) Replace with any additional Terraform command options you want to pass
